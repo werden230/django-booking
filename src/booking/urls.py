@@ -18,6 +18,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from booking_service.views import BookingAPIView, RoomAPIView
+
 urlpatterns = [
     path("admin/", admin.site.urls),
+    path("api/v1/room/", RoomAPIView.as_view()),
+    path("api/v1/room/<int:pk>", RoomAPIView.as_view()),
+    path("api/v1/booking/", BookingAPIView.as_view()),
+    path("api/v1/booking/<int:pk>", BookingAPIView.as_view()),
 ]
