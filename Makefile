@@ -1,6 +1,6 @@
 PY_SRCS=src
 
-.PHONY: help lint fmt type check
+.PHONY: help lint fmt type check run
 help:
 	@echo "Доступные цели:"
 	@echo " fix - ruff check (с автофиксом)"
@@ -21,3 +21,6 @@ type:
 	poetry run mypy $(PY_SRCS)
 
 check: lint fmt type
+
+run:
+	poetry run python3 src/manage.py runserver
