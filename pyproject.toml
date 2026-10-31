@@ -17,6 +17,14 @@ dependencies = [
 [tool.poetry]
 package-mode = false
 
+[tool.pytest]
+DJANGO_SETTINGS_MODULE = "booking.settings"
+pythonpath = [
+    "src"
+]
+testpaths = [
+    "tests"
+]
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
@@ -30,6 +38,7 @@ dev = [
     "mypy (>=2.4.0,<3.0.0)",
     "djangorestframework-stubs (>=3.18.1,<4.0.0)",
     "django-stubs (>=6.1.2,<7.0.0)",
+    "pytest-django (>=4.14.0,<5.0.0)",
 ]
 
 [tool.mypy]
