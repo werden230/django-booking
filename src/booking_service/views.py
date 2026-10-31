@@ -60,10 +60,13 @@ class BookingAPIView(generics.DestroyAPIView[Booking], generics.ListCreateAPIVie
 
         date_from = data.get("date_from")
         date_to = data.get("date_to")
+        room = data.get("room")
 
-        intersection = Booking.objects.filter(date_from__lte=date_to, date_to__gte=date_from)
+        intersection = Booking.objects.filter(
+            date_from__lte=date_to, date_to__gte=date_from, room=room
+        )
 
-        if len(intersection) > 0:
+        if intersection.exists():
             return Response(
                 {"error": "Booking intersection occured!"},
                 status=status.HTTP_400_BAD_REQUEST,
